@@ -1,6 +1,7 @@
 var noble = require('noble');
 var _     = require('lodash');
 
+// TesselのBLEモジュールのサービス/キャラクタリスティクスのUUID達
 // uuids for Services and characteristics of Tessel BLE module
 // see  https://github.com/tessel/ble-ble113a/blob/master/lib/profile.json
 var UUIDs = {
@@ -45,6 +46,22 @@ noble.on('discover', function(peripheral){
         },2000);
 
       });
+
+
+      ////////////////////////////////////////////
+      // disconnect when process exits
+      // プロセス殺すときに接続を切る
+      var signals = ['SIGINT', 'SIGHUP', 'SIGTERM'];
+      for(var i=0; i < signals.length ; i++){
+        var signal = signals[ i ];
+        process.on(signal,function(){ 
+          peripheral.disconnect( function(){
+            console.log("fin");
+            process.exit(1);
+          });
+        });
+      }
+
     });
 
   });
