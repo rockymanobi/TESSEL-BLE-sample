@@ -1,0 +1,15 @@
+{
+  "name": "ble-test-for-tessel",
+  "version": "0.0.0",
+  "description": "sample implementation of connecting tessel with ble",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rocky",
+  "license": "MIT",
+  "dependencies": {
+    "noble" : "latest",
+    "lodash" : "latest"
+  }
+}

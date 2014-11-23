@@ -1,0 +1,80 @@
+
+const int LED=13;
+int rsvData = 0;
+int sensorVal = 0;
+
+void setup(){
+  pinMode(LED, OUTPUT); 
+  Serial.begin(9600);
+}
+
+void loop(){
+  if( digitalRead(8) == 0 ){
+    Serial.println(0);    
+  }
+
+  //ウェイト
+  //digitalWrite(LED, HIGH);
+  
+  delay(1000);
+}
+
+
+
+
+
+
+const int LED=13;
+int rsvData = 0;
+int sensorVal = 0;
+
+void setup(){
+  pinMode(LED, OUTPUT); 
+  Serial.begin(9600);
+}
+
+void loop(){
+  Serial.println("Hello World!");
+
+  //ウェイト
+  delay(1000);
+
+}
+
+
+
+
+
+const int LED=13;
+int rsvData = 0;
+int sensorVal = 0;
+
+void setup()
+{
+  pinMode(LED, OUTPUT); 
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Serial.println(123);
+  // 受信処理
+  if(Serial.available() > 0){
+    rsvData = Serial.read();
+    if(rsvData == 1){ 
+      digitalWrite(LED, HIGH);
+    }else if(rsvData == 0){
+      digitalWrite(LED, LOW);
+    } 
+  } 
+
+  //センサー読み取り～送信
+  sensorVal = 11789; //analogRead(0);
+  sensorVal = sensorVal>>2; //10bit->8bit値
+  //Serial.write("hoge");
+
+  //ウェイト
+  delay(1000);
+
+}
+
